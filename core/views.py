@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from datetime import datetime, timedelta
 from django.http.response import Http404, JsonResponse
+from django.views.generic import TemplateView
 #control f2 pra celecionar todos os items iguais
 # Create your views here.
 # def index(request):

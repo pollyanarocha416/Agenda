@@ -1,14 +1,18 @@
+
+
 {% extends "model-page.html" %}
 
 {% block content %}
-    <h2>Agendamentos</h2>
+    <head>{% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"></head>
+    <h2 style="color: rgb(2, 70, 189)">Agendamentos</h2>
     <a href="evento/">
     <button type="button">Novo Evento</button></a>
      <ul style="font-size: 18px">
         {% for evento in eventos %}
-            <li>
+            <li style="color: rgb(12, 58, 12)">
                 <div style={% if evento.get_evento_atrasado %}   
-                                "color:red"
+                                "color:blue"
                         {% endif %}>
                     {{ evento.titulo }} - {{ evento.get_data_evento }}
 
@@ -19,3 +23,5 @@
         {% endfor %}
     </ul>
 {% endblock %}
+
+       
