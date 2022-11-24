@@ -17,7 +17,12 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect('/')
+# tentativa de criar login
 
+
+
+#############################
+# usuario e login
 def submit_login(request):
     if request.POST:
         username = request.POST.get('username')
@@ -47,7 +52,7 @@ def evento(request):
         dados['evento'] = Evento.objects.get(id=id_evento)
     return render(request, 'evento.html', dados)
 
-
+# submeter evento do usuario
 @login_required(login_url='/login/')
 def submit_evento(request):
     if request.POST:
@@ -67,7 +72,7 @@ def submit_evento(request):
                                 usuario=usuario) 
     return redirect('/')                      
 
-
+#deletar evento do usuario
 @login_required(login_url='/login/')
 def delete_evento(request, id_evento):
     usuario = request.user
@@ -81,6 +86,7 @@ def delete_evento(request, id_evento):
         raise Http404()
     return redirect('/')
 
+# requerer evento do usuario
 @login_required(login_url='/login/')
 def json_lista_evento(request):
     usuario = request.user

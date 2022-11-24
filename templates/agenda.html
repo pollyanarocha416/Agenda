@@ -5,12 +5,12 @@
 {% block content %}
     <head>{% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"></head>
-    <h2 style="color: rgb(2, 70, 189)">Agendamentos</h2>
-    <a href="evento/">
+    <h2 style="color: rgb(102, 158, 255)">Agendamentos</h2>
+    <a class="button-agenda" href="evento/">
     <button type="button">Novo Evento</button></a>
      <ul style="font-size: 18px">
         {% for evento in eventos %}
-            <li style="color: rgb(12, 58, 12)">
+            <li style="color: rgb(0, 0, 0)">
                 <div style={% if evento.get_evento_atrasado %}   
                                 "color:blue"
                         {% endif %}>
