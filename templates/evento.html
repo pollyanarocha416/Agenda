@@ -1,28 +1,31 @@
 {% extends "model-page.html" %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/evento.css' %}">
+<!--<link rel="stylesheet" href="{% static 'css/styles.css' %}">-->
+<div class="evento">
+    <h2>Evento</h2>
+    <form action="submit" method="POST">{% csrf_token %}
+        <label>Titulo</label>
+        <input type="number" name="id_evento" value="{{ evento.id }}" hidden>
+        <br>
+        <input type="text" name="titulo" size="18" value="{{ evento.titulo }}">
+        <br>
+        <label>Data do Evento:</label>
+        <br>
+        <input type="datetime-local" name="data_evento"value="{{ evento.get_data_input_evento }}">
+        <br>
 
-<h2>Evento</h2>
-
-<form action="submit" method="POST">{% csrf_token %}
-    <label>Titulo</label>
-    <input type="number" name="id_evento" value="{{ evento.id }}" hidden>
-    <br>
-    <input type="text" name="titulo" size="18" value="{{ evento.titulo }}">
-    <br>
-    <label>Data do Evento:</label>
-    <br>
-    <input type="datetime-local" name="data_evento"value="{{ evento.get_data_input_evento }}">
-    <br>
-
-    <label>Descrição</label>
-    <br>
-    <textarea name="descricao" id="" cols="19" rows="4">{{ evento.descricao }}</textarea>
-    <br>
-    <br>
-    <button type="submit">Salvar</button>
-    <a href="/">
-        <button type="button">Cancelar</button>
-    </a>
-</form>
+        <label>Descrição</label>
+        <br>
+        <textarea name="descricao" id="" cols="19" rows="4">{{ evento.descricao }}</textarea>
+        <br>
+        <br>
+        <button type="submit">Salvar</button>
+        <a href="/">
+            <button type="button">Cancelar</button>
+        </a>
+    </form>
+</div>
 {% endblock %}
