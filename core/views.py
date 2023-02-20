@@ -1,3 +1,5 @@
+from django.contrib.auth.models import User
+from django.views.decorators.http import require_POST
 from urllib import response
 from django.shortcuts import render, redirect
 from core.models import Evento
@@ -17,9 +19,29 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect('/')
+
+
+
 # tentativa de criar login
+...
 
 
+@require_POST
+def cadastrar_usuario(request):
+    try:
+        usuario_aux = User.objects.get(email=request.POST['campo-email'])
+
+        if usuario_aux:
+            return render(request, 'caminho para o index', {'msg': 'Erro! Já existe um usuário com o mesmo e-mail'})
+
+    except User.DoesNotExist:
+        nome_usuario = request.POST['campo-nome-usuario']
+        email = request.POST['campo-email']
+        senha = request.POST['campo-senha']
+
+        novoUsuario = User.objects.create_user(
+            username=nome_usuario, email=email, password=senha)
+        novoUsuario.save()
 
 #############################
 # usuario e login

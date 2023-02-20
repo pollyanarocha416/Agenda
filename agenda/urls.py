@@ -19,6 +19,7 @@ from core import views
 from django.views.generic import RedirectView
 
 urlpatterns = [
+    path('cadastrar/', views.cadastrar_usuario),
     path('admin/', admin.site.urls),
     path('agenda/', views.lista_eventos),
     path('agenda/lista/', views.json_lista_evento),

@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadastrar usuario</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="container-login">
+            <div class="wrap-login">
+                
+                <br>
+                <form class="login-form" action="submit" method="post">{% csrf_token %}
+                    <span class="login-form-title">
+                        Faça o seu cadastro
+                    </span>
+                    <div>
+                        <div class="wrap-input margin-top-35 margin-bottom-35">
+                            <input class="input-form" type="text" name="username" autocomplete="off">
+                            <span class="focus-input-form" data-placeholder="username"></span>
+                        </div>
+    
+                        <!---senha-->
+                        <div class="wrap-input margin-bottom-35">
+                            <input class="input-form" type="password" name="password">
+                            <span class="focus-input-form" data-placeholder="Senha"></span>
+                        </div>
+                        <div class="container-login-form-btn">
+                            <button class="login-form-btn" type="submit">Entrar</button>
+                        </div>
+    
+    
+                    </div>
+                    <ul class="login-utils">
+                        <li class="margin-bottom-8 margin-top-8">
+                            <span class="text1">
+                                Esqueceu sua
+                            </span>
+    
+                            <a href="#" class="text2">
+                                senha?
+                            </a>
+                        </li>
+    
+                        <li>
+                            <span class="text1">
+                                Você ja tem uma conta?
+                            </span>
+    
+                            <a href="/agenda/templates/criar_login.html" class="text2">
+                                Criar
+                            </a>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+            <img src="{% static 'img/login.png' %}" width="300" height="300" class="margin-left-50" />
+        </div>
+    </div>
+</body>
+</html>
