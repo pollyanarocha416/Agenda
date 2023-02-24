@@ -1,3 +1,6 @@
+from django.contrib import auth
+from django.shortcuts import render
+from .forms import SignUpForm
 from django.contrib.auth.models import User
 from django.views.decorators.http import require_POST
 from urllib import response
@@ -21,8 +24,18 @@ def logout_user(request):
     return redirect('/')
 
 
-
 # tentativa de criar login
+
+
+def cadastro(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = User.objects.create_user(username=username, password=password)
+        auth.login(request, user)
+        return redirect('login_user')
+    else:
+        return render(request, 'cadastro.html')
 
 
 #############################
